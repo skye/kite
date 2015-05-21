@@ -23,9 +23,11 @@ import com.beust.jcommander.Parameters;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.io.Closeables;
+
 import java.io.InputStream;
 import java.util.Properties;
 import java.util.Set;
+
 import org.apache.commons.logging.LogFactory;
 import org.apache.hadoop.conf.Configurable;
 import org.apache.hadoop.conf.Configuration;
@@ -45,6 +47,7 @@ import org.kitesdk.cli.commands.DeleteCommand;
 import org.kitesdk.cli.commands.FlumeConfigCommand;
 import org.kitesdk.cli.commands.InfoCommand;
 import org.kitesdk.cli.commands.InputFormatImportCommand;
+import org.kitesdk.cli.commands.JSONConvertCommand;
 import org.kitesdk.cli.commands.JSONImportCommand;
 import org.kitesdk.cli.commands.JSONSchemaCommand;
 import org.kitesdk.cli.commands.ListCommand;
@@ -111,6 +114,7 @@ public class Main extends Configured implements Tool {
     jc.addCommand("csv-import", new CSVImportCommand(console));
     jc.addCommand("json-schema", new JSONSchemaCommand(console));
     jc.addCommand("json-import", new JSONImportCommand(console));
+    jc.addCommand("json-convert", new JSONConvertCommand(console));
     jc.addCommand("partition-config", new CreatePartitionStrategyCommand(console));
     jc.addCommand("mapping-config", new CreateColumnMappingCommand(console));
     jc.addCommand("log4j-config", new Log4jConfigCommand(console));
