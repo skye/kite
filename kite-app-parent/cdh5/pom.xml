@@ -435,9 +435,9 @@
       </dependency>
       <!-- manage parquet dependency versions !-->
       <dependency>
-        <groupId>com.twitter</groupId>
+        <groupId>org.apache.parquet</groupId>
         <artifactId>parquet-avro</artifactId>
-        <version>${kite.parquet.version}</version>
+        <version>1.8.0</version>
       </dependency>
       <dependency>
         <groupId>com.twitter</groupId>

@@ -41,8 +41,8 @@ import org.kitesdk.data.spi.JsonUtil;
 import org.kitesdk.data.spi.filesystem.CSVProperties;
 import org.kitesdk.data.spi.filesystem.CSVUtil;
 import org.slf4j.Logger;
-
-import parquet.avro.AvroParquetWriter;
+import org.apache.parquet.avro.AvroParquetWriter;
+import org.apache.parquet.hadoop.ParquetWriter;
 
 @Parameters(commandDescription="Convert a JSON file to Parquet or Avro")
 public class JSONConvertCommand extends BaseCommand {
@@ -70,9 +70,13 @@ public class JSONConvertCommand extends BaseCommand {
     JsonNode root = mapper.readValue(jsonPath, JsonNode.class);
     Preconditions.checkArgument(root.isArray(),
         "Input JSON should be an array of records");
+    
+    Configuration conf = new Configuration();
+    conf.set("parquet.avro.write-old-list-structure", "false");
 
-    AvroParquetWriter<GenericRecord> writer = new AvroParquetWriter<GenericRecord>(
-        outputPath, schema);
+    AvroParquetWriter<GenericRecord> writer = new AvroParquetWriter<GenericRecord>(outputPath, schema, 
+        AvroParquetWriter.DEFAULT_COMPRESSION_CODEC_NAME, AvroParquetWriter.DEFAULT_BLOCK_SIZE,
+        AvroParquetWriter.DEFAULT_PAGE_SIZE, true, conf);
 
     for (JsonNode jsonRecord : root) {
       System.out.println("record: " + jsonRecord);

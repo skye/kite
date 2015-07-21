@@ -17,8 +17,10 @@ package org.kitesdk.data.spi.filesystem;
 
 import com.google.common.base.Objects;
 import com.google.common.io.Closeables;
+
 import java.io.IOException;
 import java.util.Arrays;
+
 import org.apache.avro.Schema;
 import org.apache.avro.generic.IndexedRecord;
 import org.apache.hadoop.conf.Configuration;
@@ -28,9 +30,9 @@ import org.kitesdk.data.CompressionType;
 import org.kitesdk.data.Formats;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import parquet.avro.AvroParquetWriter;
-import parquet.hadoop.ParquetWriter;
-import parquet.hadoop.metadata.CompressionCodecName;
+import org.apache.parquet.avro.AvroParquetWriter;
+import org.apache.parquet.hadoop.ParquetWriter;
+import org.apache.parquet.hadoop.metadata.CompressionCodecName;
 
 class ParquetAppender<E extends IndexedRecord> implements FileSystemWriter.FileAppender<E> {
 
@@ -64,9 +66,7 @@ class ParquetAppender<E extends IndexedRecord> implements FileSystemWriter.FileA
       codecName = getCompressionCodecName();
     }
     avroParquetWriter = new AvroParquetWriter<E>(fileSystem.makeQualified(path),
-        schema, codecName, DEFAULT_BLOCK_SIZE,
-        ParquetWriter.DEFAULT_PAGE_SIZE,
-        ParquetWriter.DEFAULT_IS_DICTIONARY_ENABLED, conf);
+        schema);
   }
 
   @Override

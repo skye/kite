@@ -281,6 +281,12 @@
       <version>${project.version}</version>
       <type>test-jar</type>
       <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>com.twitter</groupId>
+          <artifactId>parquet-avro</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <dependency>

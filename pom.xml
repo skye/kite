@@ -582,24 +582,24 @@
           <artifactId>maven-jar-plugin</artifactId>
           <version>${vers.maven-jar-plugin}</version>
         </plugin>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>findbugs-maven-plugin</artifactId>
-          <version>${vers.findbugs-maven-plugin}</version>
-          <configuration>
-            <effort>Max</effort>
-            <threshold>Low</threshold>
-            <xmlOutput>true</xmlOutput>
-          </configuration>
-          <executions>
-            <execution>
-              <phase>verify</phase>
-              <goals>
-                <goal>check</goal>
-              </goals>
-            </execution>
-          </executions>
-        </plugin>
+        <!-- <plugin> -->
+        <!--   <groupId>org.codehaus.mojo</groupId> -->
+        <!--   <artifactId>findbugs-maven-plugin</artifactId> -->
+        <!--   <version>${vers.findbugs-maven-plugin}</version> -->
+        <!--   <configuration> -->
+        <!--     <effort>Max</effort> -->
+        <!--     <threshold>Low</threshold> -->
+        <!--     <xmlOutput>true</xmlOutput> -->
+        <!--   </configuration> -->
+        <!--   <executions> -->
+        <!--     <execution> -->
+        <!--       <phase>verify</phase> -->
+        <!--       <goals> -->
+        <!--         <goal>check</goal> -->
+        <!--       </goals> -->
+        <!--     </execution> -->
+        <!--   </executions> -->
+        <!-- </plugin> -->
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>build-helper-maven-plugin</artifactId>
@@ -926,9 +926,9 @@
         </exclusions>
       </dependency>
       <dependency>
-        <groupId>com.twitter</groupId>
+        <groupId>org.apache.parquet</groupId>
         <artifactId>parquet-avro</artifactId>
-        <version>${vers.parquet}</version>
+        <version>1.8.0</version>
         <exclusions>
           <exclusion>
             <groupId>org.apache.hadoop</groupId>

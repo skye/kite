@@ -137,8 +137,9 @@
       <artifactId>avro</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.twitter</groupId>
+      <groupId>org.apache.parquet</groupId>
       <artifactId>parquet-avro</artifactId>
+      <version>1.8.0</version>
       <exclusions>
         <exclusion>
           <groupId>org.apache.hadoop</groupId>
